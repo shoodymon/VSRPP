@@ -37,6 +37,7 @@ namespace Lab_3
 
             double h = (xk - xn) / n;
             var results = new List<Result>();
+            StepTextBlock.Text = h.ToString();
 
             for (double x = xn; x <= xk; x += h)
             {
