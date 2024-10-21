@@ -1,0 +1,91 @@
+﻿<Window x:Class="Lab_14.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab_14"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:wpfui="clr-namespace:Wpf.Ui.Controls;assembly=Wpf.Ui"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="800"
+        Background="#FF474C5B">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ToolBar Grid.Row="0" Background="#FF626295">
+            <wpfui:Button x:Name="PlotGraphButton" ToolTip="Построить график" 
+                          Style="{StaticResource ToolBarButtonStyle}" Click="PlotGraphButton_Click">
+                <Image Source="Images/icons8-plot-30.png" Style="{StaticResource ToolBarImageStyle}"/>
+            </wpfui:Button>
+            <wpfui:Button x:Name="GenerateTableButton" ToolTip="Создать таблицу" 
+                          Style="{StaticResource ToolBarButtonStyle}" Click="GenerateTableButton_Click">
+                <Image Source="Images/icons8-table-properties-50.png" Style="{StaticResource ToolBarImageStyle}"/>
+            </wpfui:Button>
+            <wpfui:Button x:Name="ClearGraphButton" ToolTip="Очистить график" 
+                          Style="{StaticResource ToolBarButtonStyle}" Click="ClearGraphButton_Click">
+                <Image Source="Images/icons8-delete-graph-24.png" Style="{StaticResource ToolBarImageStyle}"/>
+            </wpfui:Button>
+            <wpfui:Button x:Name="ClearTableButton" ToolTip="Очистить таблицу" 
+                          Style="{StaticResource ToolBarButtonStyle}" Click="ClearTableButton_Click">
+                <Image Source="Images/icons8-delete-view-50.png" Style="{StaticResource ToolBarImageStyle}"/>
+            </wpfui:Button>
+            <wpfui:Button x:Name="ClearTextBoxButton" ToolTip="Очистить поля" 
+                          Style="{StaticResource ToolBarButtonStyle}" Click="ClearTextBoxButton_Click">
+                <Image Source="Images/icons8-clear-symbol-48.png" Style="{StaticResource ToolBarImageStyle}"/>
+            </wpfui:Button>
+            <wpfui:Button x:Name="ClearAllButton" ToolTip="Очистить все" 
+                          Style="{StaticResource ToolBarButtonStyle}" Click="ClearAllButton_Click">
+                <Image Source="Images/icons8-remove-24.png" Style="{StaticResource ToolBarImageStyle}"/>
+            </wpfui:Button>
+        </ToolBar>
+
+        <TabControl Grid.Row="1" Background="Transparent" BorderThickness="0">
+            <TabItem Header="Ввод данных" Style="{StaticResource ModernTabItemStyle}">
+                <Grid Margin="10" Cursor="">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Column="0" Grid.Row="0">
+                        <wpfui:TextBlock Text="Введите значение x:" Style="{StaticResource LabelStyle}"/>
+                        <wpfui:TextBox x:Name="xTextBox" Style="{StaticResource TextBoxStyle}"/>
+                        <wpfui:TextBlock Text="Введите значение y:" Style="{StaticResource LabelStyle}"/>
+                        <wpfui:TextBox x:Name="yTextBox" Style="{StaticResource TextBoxStyle}"/>
+                        <wpfui:TextBlock Text="Введите значение z:" Style="{StaticResource LabelStyle}"/>
+                        <wpfui:TextBox x:Name="zTextBox" Style="{StaticResource TextBoxStyle}"/>
+                        <wpfui:TextBlock Text="Введите значение h:" Style="{StaticResource LabelStyle}"/>
+                        <wpfui:TextBox x:Name="hTextBox" Style="{StaticResource TextBoxStyle}"/>
+                        <wpfui:Button x:Name="ResultButton" Content="Построить" 
+                                      Style="{StaticResource ButtonStyle}" Click="ResultButton_Click" Cursor="Hand"/>
+                    </StackPanel>
+
+                    <Border Grid.Column="1" Grid.Row="0" Background="#2D2D30" CornerRadius="5" Margin="10,0,0,0">
+                        <oxy:PlotView x:Name="GraphicPlotView2"/>
+                    </Border>
+
+                    <wpfui:TextBox x:Name="ResultTextBox" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
+                                   IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
+                                   Height="80" Margin="0,10,0,0" Style="{StaticResource TextBoxStyle}"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="График" Style="{StaticResource ModernTabItemStyle}">
+                <oxy:PlotView x:Name="GraphicPlotView" Margin="10"/>
+            </TabItem>
+
+            <TabItem Header="Таблица" Style="{StaticResource ModernTabItemStyle}">
+                <wpfui:TextBox x:Name="TableTextBox" IsReadOnly="True" TextWrapping="Wrap" 
+                               VerticalScrollBarVisibility="Auto" Height="Auto" Margin="10"
+                               Style="{StaticResource TextBoxStyle}"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
