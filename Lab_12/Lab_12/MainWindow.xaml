@@ -1,0 +1,83 @@
+﻿<Window x:Class="Lab_12.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab_12" 
+        xmlns:oxy="http://oxyplot.org/wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="800">
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top" Background="Bisque">
+            <Button x:Name="PlotGraphButton" ToolTip="Построить график"
+                    Style="{StaticResource ToolBarButton}" Click="PlotGraphButton_Click">
+                <Image Source="Images/icons8-plot-30.png" Style="{StaticResource ToolBarImage}"/>
+            </Button>
+            <Button x:Name="GenerateTableButton" ToolTip="Создать таблицу" 
+                    Style="{StaticResource ToolBarButton}" Click="GenerateTableButton_Click">
+                <Image Source="Images/icons8-table-properties-50.png" Style="{StaticResource ToolBarImage}"/>
+            </Button>
+            <Button x:Name="ClearGraphButton" ToolTip="Очистить график"
+                    Style="{StaticResource ToolBarButton}" Click="ClearGraphButton_Click">
+                <Image Source="Images/icons8-delete-graph-24.png" Style="{StaticResource ToolBarImage}"/>
+            </Button>
+            <Button x:Name="ClearTableButton" ToolTip="Очистить таблицу"
+                    Style="{StaticResource ToolBarButton}" Click="ClearTableButton_Click">
+                <Image Source="Images/icons8-delete-view-50.png" Style="{StaticResource ToolBarImage}"/>
+            </Button>
+            <Button x:Name="ClearTextBoxButton" ToolTip="Очистить поля"
+                    Style="{StaticResource ToolBarButton}" Click="ClearTextBoxButton_Click">
+                <Image Source="Images/icons8-clear-symbol-48.png" Style="{StaticResource ToolBarImage}"/>
+            </Button>
+            <Button x:Name="ClearAllButton" ToolTip="Очистить все" 
+                    Style="{StaticResource ToolBarButton}" Click="ClearAllButton_Click">
+                <Image Source="Images/icons8-remove-24.png" Style="{StaticResource ToolBarImage}"/>
+            </Button>
+        </ToolBar>
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Введите значение x:" Grid.Row="0" Style="{StaticResource labelInput}"/>
+                <Label Content="Введите значение y:" Grid.Row="2" Style="{StaticResource labelInput}"/>
+                <Label Content="Введите значение z:" Grid.Row="4" Style="{StaticResource labelInput}"/>
+                <Label Content="Введите значение h:" Grid.Row="6" Style="{StaticResource labelInput}"/>
+
+                <TextBox x:Name="xTextBox" Grid.Row="1" Style="{StaticResource textBoxInput}"/>
+                <TextBox x:Name="yTextBox" Grid.Row="3" Style="{StaticResource textBoxInput}"/>
+                <TextBox x:Name="zTextBox" Grid.Row="5" Style="{StaticResource textBoxInput}"/>
+                <TextBox x:Name="hTextBox" Grid.Row="7" Style="{StaticResource textBoxInput}"/>
+            </Grid>
+
+            <oxy:PlotView x:Name="GraphicPlotView" Grid.Row="0" Grid.Column="1"/>
+
+            <Button x:Name="ResultButton" Content="Построить" 
+                    Grid.Row="2" Grid.Column="0" 
+                    Style="{StaticResource Button}" Click="ResultButton_Click"/>
+
+            <TextBox x:Name="ResultTextBox" Grid.Row="1" Grid.Column="1"
+                     IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
+                     Height="80" Margin="50,0,10,20"/>
+        </Grid>
+    </DockPanel>
+</Window>
