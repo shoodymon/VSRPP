@@ -1,0 +1,48 @@
+﻿<Window x:Class="Lab_11.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab_11"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Изображения">
+                <Grid>
+                    <Image x:Name="displayImage" Stretch="Uniform" Margin="0,80,0,0"/>
+                    <StackPanel Style="{StaticResource StackButtonPanel}">
+                        <Button x:Name="OpenImageButton" Content="Открыть изображение" 
+                            Style="{StaticResource ImageButton}" Click="OpenImageButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Фигуры">
+                <Grid>
+                    <Canvas x:Name="shapesCanvas" Background="White"/>
+                    <StackPanel Style="{StaticResource StackButtonPanel}">
+                        <Button x:Name="DrawRectanbleButton" Content="Прямоугольник" 
+                                Style="{StaticResource FigureButton}" Click="DrawRectanbleButton_Click"/>
+                        <Button x:Name="DrawEllipseButton" Content="Эллипс" 
+                                Style="{StaticResource FigureButton}" Click="DrawEllipseButton_Click"/>
+                        <Button x:Name="DrawPolygonButton" Content="Треугольник"
+                                Style="{StaticResource FigureButton}" Click="DrawPolygonButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Примитивы">
+                <Grid>
+                    <Canvas x:Name="drawingCanvas" Background="White" 
+                            MouseLeftButtonDown="DrawingCanvas_MouseLeftButtonDown" 
+                            MouseLeftButtonUp="DrawingCanvas_MouseLeftButtonUp"
+                            MouseMove="DrawingCanvas_MouseMove"/>
+                    <StackPanel Style="{StaticResource StackButtonPanel}">
+                        <RadioButton Content="Линия" Style="{StaticResource PrimitiveButton}" Checked="Tool_Checked"/>
+                        <RadioButton Content="Прямоугольник" Style="{StaticResource PrimitiveButton}" Checked="Tool_Checked"/>
+                        <RadioButton Content="Эллипс" Style="{StaticResource PrimitiveButton}" Checked="Tool_Checked"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
